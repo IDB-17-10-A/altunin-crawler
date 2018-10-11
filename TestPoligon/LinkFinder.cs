@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace WebCrawler
 {
@@ -36,19 +34,23 @@ namespace WebCrawler
             List<String> links = new List<string>();
 
             _webClient.Encoding = Encoding.UTF8;
+            
             tempPage = _webClient.DownloadString(_defaultUrl);
 
             MatchCollection matchCollection = Regex.Matches(tempPage, PatternDefault);
 
             foreach (var element in matchCollection)
             {
-                //System.Threading.Thread.Sleep(3000);
                 var temp = element.ToString();
 
                 if (!(temp == "/") && !string.IsNullOrEmpty(temp) && !(temp == "#")
                     && !temp.Contains(".pdf") && !temp.Contains(".doc") && !temp.Contains(".docx")
                     && !temp.StartsWith("#"))
                 {
+                    if(temp.EndsWith("/"))
+                    {
+                        temp = temp.Remove(temp.Length - 1,1);
+                    }
                     if (temp.StartsWith("//"))
                     {
                         temp = temp.Remove(0, 1);

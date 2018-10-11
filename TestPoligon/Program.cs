@@ -9,13 +9,9 @@ namespace WebCrawler
     {
         static void Main(string[] args)
         {
-
-            //LinkFinder linkFinder = new LinkFinder(@"http://stankin.ru");
-            //foreach(var element in linkFinder.GetSiteLinks())
-            //{
-            //    Console.WriteLine(element);
-            //}
-            Crawler crawler = new Crawler("http://stankin.ru");
+            Crawler crawler = new Crawler("https://vk.com",1);
+            crawler.Parse();
+            crawler.SaveInFile(@"D:\fil.txt");
             Console.ReadKey();
         }
     }
