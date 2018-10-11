@@ -9,9 +9,9 @@ namespace WebCrawler
     {
         static void Main(string[] args)
         {
-            Crawler crawler = new Crawler("https://vk.com",1);
+            Crawler crawler = new Crawler("http://stankin.ru",1);
             crawler.Parse();
-            crawler.SaveInFile(@"D:\fil.txt");
+            crawler.SaveInFile(@"D:\results.txt");
             Console.ReadKey();
         }
     }
